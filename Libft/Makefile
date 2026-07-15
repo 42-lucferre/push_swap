@@ -6,7 +6,7 @@
 #    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/11 00:25:40 by lucferre          #+#    #+#              #
-#    Updated: 2026/07/13 22:07:30 by lucferre         ###   ########.fr        #
+#    Updated: 2026/07/14 23:22:39 by lucferre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,12 +56,10 @@ $(NAME): $(OBJ)
 %.o: %.c $(HEADER)
 	@echo -n "$(YELLOW)Compiling $<...$(DEF_COLOR)"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo -n "$(GREEN) [OK]$(DEF_COLOR)             \r"
+	@echo -n "$(GREEN) [OK]$(DEF_COLOR)                       \r"
 
 clean:
-	@echo -n "$(CYAN)Removing object files...$(DEF_COLOR)"
 	@rm -f $(OBJ) *.gch
-	@echo "$(GREEN) [OK]$(DEF_COLOR)"
 
 fclean: clean
 	@echo -n "$(RED)Removing libft.a...$(DEF_COLOR)"

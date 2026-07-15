@@ -6,7 +6,7 @@
 #    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 22:34:11 by lucferre          #+#    #+#              #
-#    Updated: 2026/07/13 22:45:06 by lucferre         ###   ########.fr        #
+#    Updated: 2026/07/14 23:19:58 by lucferre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ WHITE = \033[0;97m
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	@cc $(CFLAGS) $(OBJ) -o $(NAME)
+	@cc $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "\n$(GREEN)$(NAME) compiled! $(DEF_COLOR)\n"
 
 %.o: %.c $(HEADER)
