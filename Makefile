@@ -6,7 +6,7 @@
 #    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 22:34:11 by lucferre          #+#    #+#              #
-#    Updated: 2026/07/15 22:38:08 by lucferre         ###   ########.fr        #
+#    Updated: 2026/07/16 23:35:56 by lucferre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 LIBFT_DIR = ./Libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRC = main.c sorts.c
+SRC = main.c sorts.c data_operators.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h
 

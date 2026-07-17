@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/16 00:24:03 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/17 00:35:08 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ int	*stack_creator(int size, char **argv)
 	while (c < size)
 	{
 		stack_a[c] = ft_atoi(argv[c + 1]);
-		stack_b[c] = 0;
+		//stack_b[c] = 0;
 		//ft_printf("%d", ft_atoi(argv[c + 1]));
 		c++;
 	}
-	stack_b = insertion_sort(stack_a, stack_b, size);
-	free(stack_a);
-	stack_b[size] = -1;
-	return (stack_b);
+	stack_a = insertion_sort(stack_a, stack_b, size);
+	free(stack_b);
+	//ft_printf("%d\n", stack_a[1]);
+	stack_a[size] = -1;
+	return (stack_a);
 }
 
 int	main(int argc, char **argv)

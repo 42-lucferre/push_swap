@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/16 00:46:19 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/17 00:50:19 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,10 @@ int		main(int argc, char **argv);
 int		*stack_creator(int argc, char **argv);
 int		*insertion_sort(int *stack_a, int *stack_b, int size);
 void	insert(int element_a, int *stack_b, int pos);
+void	swap(int *stack, int size);
+void	push(int *stack_a, int *stack_b, int size_a, int size_b);
+void	rotate(int	*stack, int size);
+void	reverse_rotate(int *stack, int size);
+int		min_finder(int *stack, int size);
 
 #endif
