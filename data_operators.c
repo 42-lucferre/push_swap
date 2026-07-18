@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 23:03:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 02:15:38 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 03:46:27 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	swap(int *stack, int size)
 	stack[1] = tmp;
 }
 
-void	push(int *stack_a, int *stack_b, int size_a, int size_b)
+int	push(int *stack_a, int *stack_b, int size_a, int size_b)
 {
 	int	i;
 
 	if (size_a <= 0)
-		return ;
+		return (0);
 	while (size_b > 0)
 	{
 		stack_b[size_b] = stack_b[size_b - 1];
@@ -54,6 +54,7 @@ void	push(int *stack_a, int *stack_b, int size_a, int size_b)
 		stack_a[i - 1] = stack_a[i];
 		i++;
 	}
+	return (1);
 }
 
 void	rotate(int	*stack, int size)

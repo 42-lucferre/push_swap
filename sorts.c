@@ -6,64 +6,35 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 02:42:44 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 04:22:08 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	*insertion_sort(int *stack_a, int *stack_b, int size)
-// {
-// 	int	i_a;
-// 	int	i_b;
-
-// 	//stack_b[0] = stack_a[0];
-// 	i_a = 0;
-// 	i_b = 1;
-// 	while (i_a < size)
-// 	{
-// 		i_b = 1;
-// 		while (stack_a[i_a] > stack_b[i_b] && i_b < size)
-// 			i_b++;
-// 		insert(stack_a[i_a], stack_b, i_b - 1);
-// 		i_a++;
-// 	}
-// 	return (stack_b);
-// }
-
-int	*insertion_sort(int *stack_a, int *stack_b, int size)
+int	*insertion_sort(int *stack_a, int *stack_b, int size, t_op *op_counter)
 {
-	int	i;
-	int	j;
-	int	index;
+	int			i;
+	int			current_size;
+	int			index;
 
+	op_counter->pa = 0;
+	op_counter->pb = 0;
 	i = 0;
 	while (i < size)
 	{
-		index = min_finder(stack_a, size - i);
-		j = 0;
-		while (j < index)
-		{
-			if (index <= (size - i) / 2)
-				rotate(stack_a, size - i);
-			else
-			{
-				while (j < size - index)
-				{
-					reverse_rotate(stack_a, size - i);
-					j++;
-				}
-				break ;
-			}
-			j++;
-		}
-		push(stack_a, stack_b, size - i, i);
+		current_size = size - i;
+		index = min_finder(stack_a, current_size);
+		rotation_direction(stack_a, index, current_size, op_counter);
+		if (push(stack_a, stack_b, current_size, i))
+			op_counter->pb++;
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
-		push(stack_b, stack_a, size, i);
+		if (push(stack_b, stack_a, size, i))
+			op_counter->pa++;
 		i++;
 	}
 	return (stack_a);
@@ -88,19 +59,40 @@ int	min_finder(int *stack, int size)
 	return (index);
 }
 
-// void	rotation_direction(int *stack, int index, int size)
-// {
-// 	int	j;
-	
-// 	j = 0;
-// 	if (index <= size)
-// }
+void	rotation_direction(int *stack, int index, int current_size, t_op *op_c)
+{
+	int	j;
+
+	j = 0;
+	if (index <= current_size / 2)
+	{
+		while (j < index)
+		{
+			rotate(stack, current_size);
+			op_c->ra++;
+			j++;
+		}
+	}
+	else
+	{
+		while (j < current_size - index)
+		{
+			reverse_rotate(stack, current_size);
+			op_c->rra++;
+			j++;
+		}
+	}
+}
 
 
-// 1 
-// 8 
-// 9 
-// 7 
-// 3 
-// 7  
+// 1 8 4 3 4 8 7 8 9
+// 8 9 8 4 8 9 8 9
+// 9 7 9 8 9 7 9
+// 7 3 7 9 7
+// 3 4 3 7
 // 4 
+
+// pa 6
+// pb 6
+// ra
+// rra 3
