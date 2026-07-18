@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 23:03:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/17 00:54:34 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 02:15:38 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void	reverse_rotate(int *stack, int size)
 	if (size <= 1)
 		return ;
 	tmp = stack[size - 1];
-	while (size > 0)
+	while (size > 1)
 	{
-		stack[size] = stack[size - 1];
+		stack[size - 1] = stack[size - 2];
 		size--;
 	}
 	stack[0] = tmp;

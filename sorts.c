@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/17 00:49:54 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 02:42:44 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,21 @@ int	*insertion_sort(int *stack_a, int *stack_b, int size)
 	i = 0;
 	while (i < size)
 	{
-		index = min_finder(stack_a, size);
+		index = min_finder(stack_a, size - i);
 		j = 0;
 		while (j < index)
 		{
-			// if (index <= size / 2)
-			rotate(stack_a, size - i);
-			// else
-			// 	reverse_rotate(stack_a, size);
+			if (index <= (size - i) / 2)
+				rotate(stack_a, size - i);
+			else
+			{
+				while (j < size - index)
+				{
+					reverse_rotate(stack_a, size - i);
+					j++;
+				}
+				break ;
+			}
 			j++;
 		}
 		push(stack_a, stack_b, size - i, i);
@@ -81,10 +88,19 @@ int	min_finder(int *stack, int size)
 	return (index);
 }
 
+// void	rotation_direction(int *stack, int index, int size)
+// {
+// 	int	j;
+	
+// 	j = 0;
+// 	if (index <= size)
+// }
+
+
 // 1 
 // 8 
 // 9 
 // 7 
 // 3 
-//   
-//   
+// 7  
+// 4 
