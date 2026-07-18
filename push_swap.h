@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 04:20:37 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 18:40:25 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ void	rotate(int	*stack, int size);
 void	reverse_rotate(int *stack, int size);
 int		min_finder(int *stack, int size);
 void	rotation_direction(int *stack, int index, int current_size, t_op *op_c);
+void	swap_printer(t_op *op_counter, char stack);
+void	push_printer(t_op *op_counter, char stack);
+void	rotate_printer(t_op *op_counter, char stack);
+void	r_rotate_printer(t_op *op_counter, char stack);
 
 #endif

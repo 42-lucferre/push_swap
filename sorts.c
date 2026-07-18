@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 04:22:08 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/18 19:04:37 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	*insertion_sort(int *stack_a, int *stack_b, int size, t_op *op_counter)
 	int			current_size;
 	int			index;
 
-	op_counter->pa = 0;
-	op_counter->pb = 0;
 	i = 0;
 	while (i < size)
 	{
@@ -27,14 +25,14 @@ int	*insertion_sort(int *stack_a, int *stack_b, int size, t_op *op_counter)
 		index = min_finder(stack_a, current_size);
 		rotation_direction(stack_a, index, current_size, op_counter);
 		if (push(stack_a, stack_b, current_size, i))
-			op_counter->pb++;
+			push_printer(op_counter, 'b');
 		i++;
 	}
 	i = 0;
 	while (i < size)
 	{
 		if (push(stack_b, stack_a, size, i))
-			op_counter->pa++;
+			push_printer(op_counter, 'a');
 		i++;
 	}
 	return (stack_a);
@@ -69,7 +67,7 @@ void	rotation_direction(int *stack, int index, int current_size, t_op *op_c)
 		while (j < index)
 		{
 			rotate(stack, current_size);
-			op_c->ra++;
+			rotate_printer(op_c, 'a');
 			j++;
 		}
 	}
@@ -78,12 +76,11 @@ void	rotation_direction(int *stack, int index, int current_size, t_op *op_c)
 		while (j < current_size - index)
 		{
 			reverse_rotate(stack, current_size);
-			op_c->rra++;
+			r_rotate_printer(op_c, 'a');
 			j++;
 		}
 	}
 }
-
 
 // 1 8 4 3 4 8 7 8 9
 // 8 9 8 4 8 9 8 9
