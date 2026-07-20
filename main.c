@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 04:19:46 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/19 22:49:34 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_op	*stack_creator(int size, char **argv)
 	if (!stack_a || !stack_b || !op_counter)
 		return (free(stack_a), free(stack_b), free(op_counter), NULL);
 	c = 0;
-	ft_printf("size:%d\n", size);
+	// ft_printf("size:%d\n", size);
 	while (c < size)
 	{
 		stack_a[c] = ft_atoi(argv[c + 1]);
@@ -68,10 +68,10 @@ int	main(int argc, char **argv)
 	// 	ft_printf("%d\n", stack[i]);
 	// 	i++;
 	// }
-	ft_printf("%d", stack->pa);
-	ft_printf("%d", stack->pb);
-	ft_printf("%d", stack->ra);
-	ft_printf("%d", stack->rra);
+	// ft_printf("%d", stack->pa);
+	// ft_printf("%d", stack->pb);
+	// ft_printf("%d", stack->ra);
+	// ft_printf("%d", stack->rra);
 	free(stack);
 	return (0);
 }
