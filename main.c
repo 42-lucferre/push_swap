@@ -6,11 +6,63 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/19 22:49:34 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/25 02:39:27 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	bench_identifier(char **argv)
+{
+	int		sum;
+	char	*bench;
+
+	bench = "--bench";
+	sum = 0;
+	if (argv[1][0] == '-' || argv[2][0] == '-')
+	{
+		if (ft_strncmp(argv[1], argv[2], 12) == 0)
+			return (-1);
+		else if (ft_strncmp(argv[1], bench, 12) == 0)
+		{
+			sum += 16;
+			sum += flag_identifier(argv[2]);
+		}
+		else if (ft_strncmp(argv[2], bench, 12) == 0)
+		{
+			sum += 16;
+			sum += flag_identifier(argv[1]);
+		}
+		else
+			sum += flag_identifier(argv[1]);
+	}
+	return (sum);
+}
+
+int	flag_identifier(char *argv)
+{
+	int		sum;
+	char	*simple;
+	char	*medium;
+	char	*complex;
+	char	*adaptive;
+
+	simple = "--simple";
+	medium = "--medium";
+	complex = "--complex";
+	adaptive = "--adaptive";
+
+	sum = 0;
+	if (ft_strncmp(argv[1], simple, 12) == 0)
+		sum += 1;
+	else if (ft_strncmp(argv[1], medium, 12) == 0)
+		sum += 2;
+	else if (ft_strncmp(argv[1], complex, 12) == 0)
+		sum += 4;
+	else if (ft_strncmp(argv[1], adaptive, 12) == 0)
+		sum += 8;
+	return (sum);
+}
 
 void	init_counter(t_op *op_counter)
 {
@@ -58,9 +110,11 @@ t_op	*stack_creator(int size, char **argv)
 int	main(int argc, char **argv)
 {
 	//int	*stack;
-	//int	i;
+	//int		i;
 	t_op	*stack;
 
+	if (argc <= 1)
+		return (write(1, "Invalid number of arguments", 27), 2);
 	stack = stack_creator(argc - 1, argv);
 	// i = 0;
 	// while (stack[i] != -1)
