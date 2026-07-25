@@ -6,7 +6,7 @@
 #    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 22:34:11 by lucferre          #+#    #+#              #
-#    Updated: 2026/07/19 23:14:05 by lucferre         ###   ########.fr        #
+#    Updated: 2026/07/25 12:52:01 by lucferre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra
 LIBFT_DIR = ./Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 SRC = main.c simple_sort.c data_operators.c \
-operators_printer.c
+operators_printer.c flags.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h
 

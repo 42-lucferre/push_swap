@@ -6,40 +6,23 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/25 02:39:27 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:00:06 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	bench_identifier(char **argv)
-{
-	int		sum;
-	char	*bench;
 
-	bench = "--bench";
-	sum = 0;
-	if (argv[1][0] == '-' || argv[2][0] == '-')
-	{
-		if (ft_strncmp(argv[1], argv[2], 12) == 0)
-			return (-1);
-		else if (ft_strncmp(argv[1], bench, 12) == 0)
-		{
-			sum += 16;
-			sum += flag_identifier(argv[2]);
-		}
-		else if (ft_strncmp(argv[2], bench, 12) == 0)
-		{
-			sum += 16;
-			sum += flag_identifier(argv[1]);
-		}
-		else
-			sum += flag_identifier(argv[1]);
-	}
-	return (sum);
-}
+// -error -error -1
+// -error -bench 15
+// -error -simple -1
+// -bench -error 15
+// -bench -simple 17
+// -bench number 16
+// -simple -error 1
+// -simple number 1
 
-int	flag_identifier(char *argv)
+int	strat_flag(char *argv)
 {
 	int		sum;
 	char	*simple;
@@ -51,7 +34,6 @@ int	flag_identifier(char *argv)
 	medium = "--medium";
 	complex = "--complex";
 	adaptive = "--adaptive";
-
 	sum = 0;
 	if (ft_strncmp(argv[1], simple, 12) == 0)
 		sum += 1;
@@ -61,6 +43,8 @@ int	flag_identifier(char *argv)
 		sum += 4;
 	else if (ft_strncmp(argv[1], adaptive, 12) == 0)
 		sum += 8;
+	else
+		return (-1);
 	return (sum);
 }
 
