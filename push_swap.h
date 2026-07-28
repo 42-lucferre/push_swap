@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/18 18:40:25 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/27 23:35:12 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ typedef struct s_op
 	int	rrb;
 	int	rrr;
 }		t_op;
+
+typedef struct s_flags
+{
+	int	has_bench;
+	int	has_simple;
+	int	has_medium;
+	int	has_complex;
+	int	has_adaptive;
+}		t_flags;
 
 int		main(int argc, char **argv);
 t_op	*stack_creator(int argc, char **argv);
