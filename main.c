@@ -6,12 +6,11 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/25 13:00:06 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/31 00:25:13 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 // -error -error -1
 // -error -bench 15
@@ -97,6 +96,8 @@ int	main(int argc, char **argv)
 	//int		i;
 	t_op	*stack;
 
+	if (error_check(--argc, ++argv) < 0)
+		return (write(1, "Error\n", 6), 2);
 	if (argc <= 1)
 		return (write(1, "Invalid number of arguments", 27), 2);
 	stack = stack_creator(argc - 1, argv);

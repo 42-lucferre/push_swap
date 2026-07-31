@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:50:59 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/28 00:28:06 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/07/31 00:55:31 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,39 @@ int	bench_identifier(char **argv, t_flags *flags)
 	}
 	return (0);
 }
+
+int	error_check(int size, char **args)
+{
+	int	i;
+	int j;
+
+	if (size < 1)
+		return (-1);
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (ft_strncmp(args[i], args[j], 15) == 0)
+				return (-1);
+			j++;
+		}
+		j = 0;
+		while (args[i][j] != '\0') // precisa verificar o ultimo i ainda - melhor fazer outra função
+		{
+			if (args[i][j] <= '0' || args[i][j] >= '9')
+				return (-1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+0
+1
+2
+3
+
+
+4
