@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/30 21:38:46 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/05 22:44:32 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,18 @@ typedef struct s_op
 
 typedef struct s_flags
 {
-	int	has_bench;
 	int	has_simple;
 	int	has_medium;
 	int	has_complex;
 	int	has_adaptive;
 }		t_flags;
+
+typedef struct s_master
+{
+	t_op	op_counter;
+	t_flags	flags;
+	int		has_bench;
+}		t_master;
 
 int		main(int argc, char **argv);
 t_op	*stack_creator(int argc, char **argv);
