@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/31 00:25:13 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/07 07:59:27 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ t_op	*stack_creator(int size, char **argv)
 
 int	main(int argc, char **argv)
 {
-	//int	*stack;
+	//int		*stack;
 	//int		i;
-	t_op	*stack;
+	t_master	*master;
 
 	if (error_check(--argc, ++argv) < 0)
 		return (write(1, "Error\n", 6), 2);
@@ -114,3 +114,4 @@ int	main(int argc, char **argv)
 	free(stack);
 	return (0);
 }
+

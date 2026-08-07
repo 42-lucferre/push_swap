@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:50:59 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/31 00:55:31 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/07 08:25:44 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,9 @@ int	error_check(int size, char **args)
 	}
 	return (0);
 }
+
+
+
 0
 1
 2
