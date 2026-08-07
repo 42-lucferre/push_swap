@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/07 07:48:47 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/07 18:46:11 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ void	swap_printer(t_op *op_counter, char stack);
 void	push_printer(t_op *op_counter, char stack);
 void	rotate_printer(t_op *op_counter, char stack);
 void	r_rotate_printer(t_op *op_counter, char stack);
+double	disorder(int *stack, int size);
+
 
 #endif
