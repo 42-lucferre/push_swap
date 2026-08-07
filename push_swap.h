@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/05 22:44:32 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/07 07:48:47 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_master
 	t_op	op_counter;
 	t_flags	flags;
 	int		has_bench;
+	int		*stack_a;
+	int		*stack_b;
 }		t_master;
 
 int		main(int argc, char **argv);
