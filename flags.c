@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:50:59 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 14:02:11 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 15:24:03 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	error_check(t_master *master)
 {
 	int	total_flags;
 
-	if (master->size < 1)
+	if (master->size_a < 1)
 		return (-1);
-	if (rep_check(master->size, master->args) < 0)
+	if (rep_check(master->size_a, master->args) < 0)
 		return (-1);
 	total_flags = flag_check(master);
 	master->args += total_flags;
-	master->size -= total_flags;
-	if (int_check(master->size, master->args) < 0)
+	master->size_a -= total_flags;
+	if (int_check(master->size_a, master->args) < 0)
 		return (-1);
 	return (0);
 }
@@ -50,9 +50,9 @@ int	rep_check(int size, char **args)
 
 int	flag_check(t_master *master)
 {
-	if (flag_value(master->flags, master->args[0] < 0))
+	if (flag_value(master->flags, master->args[0]) < 0)
 		return (0);
-	else if (flag_value(master->flags, master->args[1] < 0))
+	else if (flag_value(master->flags, master->args[1]) < 0)
 		return (1);
 	else
 		return (2);
@@ -90,7 +90,7 @@ int	int_check(int size, char **args)
 				if (args[i][j] == '-')
 					j++;
 			}				
-			if (args[i][j] <= '0' || args[i][j] >= '9')
+			if (args[i][j] < '0' || args[i][j] > '9')
 				return (-1);
 			j++;
 		}
