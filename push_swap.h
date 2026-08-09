@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 09:28:36 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 10:58:53 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ typedef enum e_strategy
 int			main(int argc, char **argv);
 t_op		*stack_creator(int argc, char **argv);
 void		init_counter(t_op *op_counter);
-int			*insertion_sort(int *stack_a, int *stack_b,
-				int size, t_op *op_counter);
+void		insertion_sort(t_master *master);
 void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);
 int			push(int *stack_a, int *stack_b, int size_a, int size_b);
