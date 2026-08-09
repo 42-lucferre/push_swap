@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 11:57:37 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 12:21:37 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_master
 	t_flags	flags;
 	int		*stack_a;
 	int		*stack_b;
+	int		size_a;
+	int		size_b;
 }		t_master;
 
 typedef enum e_strategy
@@ -64,8 +66,7 @@ typedef enum e_strategy
 int			main(int argc, char **argv);
 t_op		*stack_creator(int argc, char **argv);
 void		init_counter(t_op *op_counter);
-int			*insertion_sort(int *stack_a, int *stack_b,
-				int size, t_op *op_counter);
+void		insertion_sort(t_master *master);
 void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);
 int			push(int *stack_a, int *stack_b, int size_a, int size_b);
@@ -81,5 +82,8 @@ void		r_rotate_printer(t_op *op_counter, char stack);
 double		disorder(int *stack, int size);
 t_strategy	adaptive(double disorder_value);
 int			rank_stack(int *stack, int size);
+void		pb_operation(t_master *master);
+void		pa_operation(t_master *master);
+int			medium_sort(t_master *master);
 
 #endif

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
 /*   Updated: 2026/08/09 13:20:39 by lucferre         ###   ########.fr       */
@@ -12,30 +12,19 @@
 
 #include "push_swap.h"
 
-int	*insertion_sort(int *stack_a, int *stack_b, int size, t_op *op_counter)
+void	insertion_sort(t_master *master)
 {
-	int			i;
-	int			current_size;
 	int			index;
 
-	i = 0;
-	while (i < size)
+	while (master->size_a > 0)
 	{
-		current_size = size - i;
-		index = min_finder(stack_a, current_size);
-		rotation_direction(stack_a, index, current_size, op_counter);
-		if (push(stack_a, stack_b, current_size, i))
-			push_printer(op_counter, 'b');
-		i++;
+		index = min_finder(master->stack_a, master->size_a);
+		rotation_direction(master->stack_a, index, master->size_a,
+			&master->op_counter);
+		pb_operation(master);
 	}
-	i = 0;
-	while (i < size)
-	{
-		if (push(stack_b, stack_a, size, i))
-			push_printer(op_counter, 'a');
-		i++;
-	}
-	return (stack_a);
+	while (master->size_b > 0)
+		pa_operation(master);
 }
 
 int	min_finder(int *stack, int size)
@@ -81,15 +70,3 @@ void	rotation_direction(int *stack, int index, int current_size, t_op *op_c)
 		}
 	}
 }
-
-// 1 8 4 3 4 8 7 8 9
-// 8 9 8 4 8 9 8 9
-// 9 7 9 8 9 7 9
-// 7 3 7 9 7
-// 3 4 3 7
-// 4 
-
-// pa 6
-// pb 6
-// ra
-// rra 3
