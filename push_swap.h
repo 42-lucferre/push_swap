@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/07 07:48:47 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/08 19:04:41 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,33 @@ typedef struct s_master
 	int		*stack_b;
 }		t_master;
 
-int		main(int argc, char **argv);
-t_op	*stack_creator(int argc, char **argv);
-void	init_counter(t_op *op_counter);
-int		*insertion_sort(int *stack_a, int *stack_b, int size, t_op *op_counter);
-void	insert(int element_a, int *stack_b, int pos);
-void	swap(int *stack, int size);
-int		push(int *stack_a, int *stack_b, int size_a, int size_b);
-void	rotate(int	*stack, int size);
-void	reverse_rotate(int *stack, int size);
-int		min_finder(int *stack, int size);
-void	rotation_direction(int *stack, int index, int current_size, t_op *op_c);
-void	swap_printer(t_op *op_counter, char stack);
-void	push_printer(t_op *op_counter, char stack);
-void	rotate_printer(t_op *op_counter, char stack);
-void	r_rotate_printer(t_op *op_counter, char stack);
+typedef enum e_strategy
+{
+	STRAT_NONE,
+	STRAT_SIMPLE,
+	STRAT_MEDIUM,
+	STRAT_COMPLEX
+}		t_strategy;
+
+int			main(int argc, char **argv);
+t_op		*stack_creator(int argc, char **argv);
+void		init_counter(t_op *op_counter);
+int			*insertion_sort(int *stack_a, int *stack_b,
+				int size, t_op *op_counter);
+void		insert(int element_a, int *stack_b, int pos);
+void		swap(int *stack, int size);
+int			push(int *stack_a, int *stack_b, int size_a, int size_b);
+void		rotate(int	*stack, int size);
+void		reverse_rotate(int *stack, int size);
+int			min_finder(int *stack, int size);
+void		rotation_direction(int *stack, int index,
+				int current_size, t_op *op_c);
+void		swap_printer(t_op *op_counter, char stack);
+void		push_printer(t_op *op_counter, char stack);
+void		rotate_printer(t_op *op_counter, char stack);
+void		r_rotate_printer(t_op *op_counter, char stack);
+double		disorder(int *stack, int size);
+t_strategy	adaptive(double disorder_value);
+int			rank_stack(int *stack, int size);
 
 #endif
