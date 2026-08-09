@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/08 19:04:41 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 09:28:36 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct s_master
 	int		has_bench;
 	int		*stack_a;
 	int		*stack_b;
+	int		size_a;
+	int		size_b;
 }		t_master;
 
 typedef enum e_strategy

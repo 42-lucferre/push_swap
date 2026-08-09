@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:40 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/08 20:17:55 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 09:29:27 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,50 @@ static int	top_distance(int *stack, int size, int start, int end)
 	{
 		if (stack[i] >= start && stack[i] < end)
 			return (i);
-		i++
+		i++;
 	}
+	return (-1);
 }
-
 
 static int	bottom_distance(int *stack, int size, int start, int end)
 {
 	int	i;
 
-	i = 0;
-	while (i < size)
+	i = size - 1;
+	while (i >= 0)
 	{
 		if (stack[i] >= start && stack[i] < end)
-			return (i);
-		i++
+			return (size - i);
+		i--;
 	}
+	return (-1);
+}
+
+static void	better_rotation(t_master *master, int top_dist, int bottom_dist)
+{
+	int	i;
+
+	if (top_dist == -1 && bottom_dist == -1)
+		return ;
+	if (top_dist <= bottom_dist)
+	{
+		i = top_dist;
+		while (i > 0)
+		{
+			rotate(master->stack_a, master->size_a);
+			rotate_printer(&master->op_counter, 'a');
+			i--;
+		}
+	}
+	else
+	{
+		i = bottom_dist;
+		while (i > 0)
+		{
+			reverse_rotate(master->stack_a, master->size_a);
+			r_rotate_printer(&master->op_counter, 'a');
+			i--;
+		}
+	}
+	return ;
 }
