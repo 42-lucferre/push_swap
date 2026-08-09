@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/07 07:59:27 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 11:46:43 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,14 @@
 // -simple -error 1
 // -simple number 1
 
-int	strat_flag(char *argv)
+int	flag_check(t_master *master)
 {
-	int		sum;
-	char	*simple;
-	char	*medium;
-	char	*complex;
-	char	*adaptive;
-
-	simple = "--simple";
-	medium = "--medium";
-	complex = "--complex";
-	adaptive = "--adaptive";
-	sum = 0;
-	if (ft_strncmp(argv[1], simple, 12) == 0)
-		sum += 1;
-	else if (ft_strncmp(argv[1], medium, 12) == 0)
-		sum += 2;
-	else if (ft_strncmp(argv[1], complex, 12) == 0)
-		sum += 4;
-	else if (ft_strncmp(argv[1], adaptive, 12) == 0)
-		sum += 8;
+	if (flag_value(master->flags, master->args[0] < 0))
+		return (0);
+	else if (flag_value(master->flags, master->args[1] < 0))
+		return (1);
 	else
-		return (-1);
-	return (sum);
+		return (2);
 }
 
 void	init_counter(t_op *op_counter)
@@ -84,7 +68,7 @@ t_op	*stack_creator(int size, char **argv)
 		//ft_printf("%d", ft_atoi(argv[c + 1]));
 		c++;
 	}
-	stack_a = insertion_sort(stack_a, stack_b, size, op_counter);
+	stack_a = insertion_sort(master);
 	free(stack_b);
 	stack_a[size] = -1;
 	return (op_counter);
@@ -96,21 +80,12 @@ int	main(int argc, char **argv)
 	//int		i;
 	t_master	*master;
 
-	if (error_check(--argc, ++argv) < 0)
+	master->args = ++argv;
+	master->size = --argc;
+	if (error_check(master) < 0)
 		return (write(1, "Error\n", 6), 2);
-	if (argc <= 1)
-		return (write(1, "Invalid number of arguments", 27), 2);
 	stack = stack_creator(argc - 1, argv);
-	// i = 0;
-	// while (stack[i] != -1)
-	// {
-	// 	ft_printf("%d\n", stack[i]);
-	// 	i++;
-	// }
-	// ft_printf("%d", stack->pa);
-	// ft_printf("%d", stack->pb);
-	// ft_printf("%d", stack->ra);
-	// ft_printf("%d", stack->rra);
+
 	free(stack);
 	return (0);
 }

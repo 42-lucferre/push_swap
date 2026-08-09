@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/08 19:04:41 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 11:55:12 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_op
 
 typedef struct s_flags
 {
+	int	has_bench;
 	int	has_simple;
 	int	has_medium;
 	int	has_complex;
@@ -48,7 +49,6 @@ typedef struct s_master
 {
 	t_op	op_counter;
 	t_flags	flags;
-	int		has_bench;
 	int		*stack_a;
 	int		*stack_b;
 }		t_master;
