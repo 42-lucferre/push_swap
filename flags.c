@@ -6,32 +6,23 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:50:59 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 11:46:05 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 14:02:11 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	flag_init(t_flags *flags)
-{
-	flags->has_bench = 0;
-	flags->has_simple = 0;
-	flags->has_medium = 0;
-	flags->has_complex = 0;
-	flags->has_adaptive = 0;
-}
-
 int	error_check(t_master *master)
 {
-	int	r;
+	int	total_flags;
 
 	if (master->size < 1)
 		return (-1);
 	if (rep_check(master->size, master->args) < 0)
 		return (-1);
-	r = flag_check(master);
-	master->args += r;
-	master->size -+ r;
+	total_flags = flag_check(master);
+	master->args += total_flags;
+	master->size -= total_flags;
 	if (int_check(master->size, master->args) < 0)
 		return (-1);
 	return (0);
@@ -57,6 +48,16 @@ int	rep_check(int size, char **args)
 	return (0);
 }
 
+int	flag_check(t_master *master)
+{
+	if (flag_value(master->flags, master->args[0] < 0))
+		return (0);
+	else if (flag_value(master->flags, master->args[1] < 0))
+		return (1);
+	else
+		return (2);
+}
+
 int	flag_value(t_flags flag, char *arg)
 {
 	if (ft_strncmp(arg, "--bench", 12) == 0)
@@ -73,11 +74,11 @@ int	flag_value(t_flags flag, char *arg)
 		return (-1);
 }
 
-int int_check(int size, char **args)
+int	int_check(int size, char **args)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < size)
 	{
@@ -97,8 +98,3 @@ int int_check(int size, char **args)
 	}
 	return (0);
 }
-
-0 15
-1 48
-2 43
-3 97
