@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_operators.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 23:03:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 11:36:18 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 14:26:14 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	push(int *stack_a, int *stack_b, int size_a, int size_b)
 	return (1);
 }
 
-void	rotate(int	*stack, int size)
+void	rotate(int *stack, int size)
 {
 	int	tmp;
 	int	i;

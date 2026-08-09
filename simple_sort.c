@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 13:20:39 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 14:43:39 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insertion_sort(t_master *master)
+void	selection_sort(t_master *master)
 {
 	int			index;
 

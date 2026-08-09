@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:08:02 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 13:48:15 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 14:42:40 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_flags(t_flags flags)
 t_master	*init_master(int size, char **args)
 {
 	t_master	*master;
-	int			i;
 
 	master = malloc(sizeof(t_master));
 	if (!master)
@@ -50,7 +49,7 @@ t_master	*init_master(int size, char **args)
 	master->stack_b = malloc(size * sizeof(int));
 	if (!master->stack_b)
 		return (free(master), free(master->stack_a), NULL);
-	master->size = size;
+	master->size_a = size;
 	master->args = args;
 	init_counter(master->op_counter);
 	init_flags(master->flags);

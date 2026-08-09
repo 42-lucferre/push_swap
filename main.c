@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 13:59:08 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/09 15:04:34 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,32 @@ void	sort_decider(t_master *master)
 
 	flag = master->flags;
 	if (!flag.has_simple && !flag.has_medium && !flag.has_complex)
-		strat = adaptive(disorder(master->stack_a, master->size));
+		strat = adaptive(disorder(master->stack_a, master->size_a));
 	if (flag.has_simple || strat == STRAT_SIMPLE)
 	{
 		strat = STRAT_SIMPLE;
-		simple_sort(master);
+		selection_sort(master);
 	}
 	else if (flag.has_medium || strat == STRAT_MEDIUM)
 	{
 		strat = STRAT_MEDIUM;
 		medium_sort(master);
 	}
-	else if (flag.has_complex || strat == STRAT_COMPLEX)
-	{
-		strat = STRAT_COMPLEX;
-		complex_sort(master);
-	}
+	// else if (flag.has_complex || strat == STRAT_COMPLEX)
+	// {
+	// 	strat = STRAT_COMPLEX;
+	// 	complex_sort(master);
+	// }
 }
 
-void	*stack_creator(t_master *master)
+void	stack_creator(t_master *master)
 {
 	int		i;
 
 	i = 0;
-	while (i < master->size)
+	while (i < master->size_a)
 	{
-		master->stack_a[i] = ft_atoi(master->args[i + 1]);
+		master->stack_a[i] = ft_atoi(master->args[i]);
 		//master->stack_b[i] = 0;
 		i++;
 	}

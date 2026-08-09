@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 12:21:37 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 14:49:30 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,6 @@ typedef struct s_flags
 	int	has_adaptive;
 }		t_flags;
 
-typedef struct s_master
-{
-	t_op	op_counter;
-	t_flags	flags;
-	int		*stack_a;
-	int		*stack_b;
-	int		size_a;
-	int		size_b;
-}		t_master;
-
 typedef enum e_strategy
 {
 	STRAT_NONE,
@@ -63,14 +53,40 @@ typedef enum e_strategy
 	STRAT_COMPLEX
 }		t_strategy;
 
+typedef struct s_master
+{
+	t_strategy	strat;
+	t_op		op_counter;
+	t_flags		flags;
+	int			*stack_a;
+	int			*stack_b;
+	int			size_a;
+	int			size_b;
+	double		disorder;
+	char		**args;
+}				t_master;
+
+// Flags & errors
+int			error_check(t_master *master);
+int			rep_check(int size, char **args);
+int			flag_check(t_master *master);
+int			flag_value(t_flags flag, char *arg);
+int			int_check(int size, char **args);
+
+// Initializers
+void		init_flags(t_flags flags);
+t_master	*init_master(int size, char **args);
+void		init_counter(t_op op_counter);
+
+// Operators
+
 int			main(int argc, char **argv);
-t_op		*stack_creator(int argc, char **argv);
-void		init_counter(t_op *op_counter);
-void		insertion_sort(t_master *master);
+void		stack_creator(t_master *master);
+void		selection_sort(t_master *master);
 void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);
 int			push(int *stack_a, int *stack_b, int size_a, int size_b);
-void		rotate(int	*stack, int size);
+void		rotate(int *stack, int size);
 void		reverse_rotate(int *stack, int size);
 int			min_finder(int *stack, int size);
 void		rotation_direction(int *stack, int index,
@@ -85,5 +101,6 @@ int			rank_stack(int *stack, int size);
 void		pb_operation(t_master *master);
 void		pa_operation(t_master *master);
 int			medium_sort(t_master *master);
+int			rank_stack(int *stack, int size);
 
 #endif
