@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 11:03:44 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 11:37:25 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,10 @@ void	insertion_sort(t_master *master)
 		index = min_finder(master->stack_a, master->size_a);
 		rotation_direction(master->stack_a, index, master->size_a,
 			&master->op_counter);
-		if (push(master->stack_a, master->stack_b, master->size_a,
-				master->size_b))
-		{
-			push_printer(&master->op_counter, 'b');
-			master->size_a--;
-			master->size_b++;
-		}
+		pb_operation(master);
 	}
 	while (master->size_b > 0)
-	{
-		if (push(master->stack_b, master->stack_a, master->size_b,
-				master->size_a))
-		{
-			push_printer(&master->op_counter, 'a');
-			master->size_b--;
-			master->size_a++;
-		}
-	}
+		pa_operation(master);
 }
 
 int	min_finder(int *stack, int size)

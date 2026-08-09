@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 10:58:53 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 11:33:51 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ void		r_rotate_printer(t_op *op_counter, char stack);
 double		disorder(int *stack, int size);
 t_strategy	adaptive(double disorder_value);
 int			rank_stack(int *stack, int size);
+void		pb_operation(t_master *master);
+void		pa_operation(t_master *master);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:40 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/09 09:29:27 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/09 11:39:15 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,4 @@ static void	better_rotation(t_master *master, int top_dist, int bottom_dist)
 			i--;
 		}
 	}
-	return ;
 }
