@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 14:49:30 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/10 23:47:35 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 # include <unistd.h>
 # include "./Libft/libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
+# ifndef MY_INT_MAX
+#  define MY_INT_MAX 2147483647
+# endif
+
+# ifndef MY_INT_MIN
+#  define MY_INT_MIN -2147483648
 # endif
 
 typedef struct s_op
@@ -70,13 +74,13 @@ typedef struct s_master
 int			error_check(t_master *master);
 int			rep_check(int size, char **args);
 int			flag_check(t_master *master);
-int			flag_value(t_flags flag, char *arg);
+int			flag_value(t_flags *flag, char *arg);
 int			int_check(int size, char **args);
 
 // Initializers
-void		init_flags(t_flags flags);
+void		init_flags(t_flags *flags);
 t_master	*init_master(int size, char **args);
-void		init_counter(t_op op_counter);
+void		init_counter(t_op *op_counter);
 
 // Operators
 
