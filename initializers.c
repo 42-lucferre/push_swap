@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:08:02 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/10 23:58:03 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/11 23:41:09 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_counter(t_op *op_counter)
 	op_counter->rra = 0;
 	op_counter->rrb = 0;
 	op_counter->rrr = 0;
+	op_counter->total = 0;
 }
 
 void	init_flags(t_flags *flags)
@@ -53,7 +54,7 @@ t_master	*init_master(int size, char **args)
 	master->args = args;
 	init_counter(&master->op_counter);
 	init_flags(&master->flags);
-	master->strat = STRAT_NONE;
+	master->strat = STRAT_START;
 	master->disorder = disorder(master->stack_a, size);
 	return (master);
 }

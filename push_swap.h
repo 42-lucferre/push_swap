@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/10 23:47:35 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 01:04:44 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_op
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
 }		t_op;
 
 typedef struct s_flags
@@ -51,6 +52,7 @@ typedef struct s_flags
 
 typedef enum e_strategy
 {
+	STRAT_START,
 	STRAT_NONE,
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
@@ -76,6 +78,11 @@ int			rep_check(int size, char **args);
 int			flag_check(t_master *master);
 int			flag_value(t_flags *flag, char *arg);
 int			int_check(int size, char **args);
+void		bench_printer(t_master *master);
+void		disorder_printer(t_master *master);
+void		flag_printer(t_master *master);
+void		strat_printer(t_master *master);
+void		op_counter_printer(t_op op_counter);
 
 // Initializers
 void		init_flags(t_flags *flags);

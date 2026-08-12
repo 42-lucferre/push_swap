@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/11 00:42:16 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 00:38:56 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,23 @@
 void	sort_decider(t_master *master)
 {
 	t_flags		flag;
-	t_strategy	strat;
 
 	flag = master->flags;
-	if (!flag.has_simple && !flag.has_medium && !flag.has_complex)
-		strat = adaptive(master->disorder);
-	if (flag.has_simple || strat == STRAT_SIMPLE)
+	if (flag.has_adaptive)
+		master->strat = adaptive(master->disorder);
+	if (master->strat == STRAT_NONE)
+		return ;
+	if (flag.has_simple || master->strat == STRAT_SIMPLE)
 	{
 		master->strat = STRAT_SIMPLE;
 		selection_sort(master);
 	}
-	else if (flag.has_medium || strat == STRAT_MEDIUM)
+	else if (flag.has_medium || master->strat == STRAT_MEDIUM)
 	{
 		master->strat = STRAT_MEDIUM;
 		medium_sort(master);
 	}
-	else if (flag.has_complex || strat == STRAT_COMPLEX)
+	else if (flag.has_complex || master->strat == STRAT_COMPLEX)
 	{
 		master->strat = STRAT_COMPLEX;
 	// 	complex_sort(master);
@@ -50,6 +51,8 @@ void	stack_creator(t_master *master)
 	}
 	master->disorder = disorder(master->stack_a, master->size_a);
 	sort_decider(master);
+	if (master->flags.has_bench)
+		bench_printer(master);
 	free(master->stack_a);
 	free(master->stack_b);
 }
