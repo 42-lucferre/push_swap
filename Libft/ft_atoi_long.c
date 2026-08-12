@@ -6,11 +6,11 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 23:07:46 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/10 23:09:06 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 01:21:15 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi_long(const char *nptr)
+long	ft_atoi_long(const char *nptr)
 {
 	int		i;
 	int		s;
