@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:16:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/10 23:19:46 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 01:24:12 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ char	*read_line(char *acc);
 char	*extract_line(char *acc, char *line);
 
 //extra
-int		ft_atoi_long(const char *nptr);
+long	ft_atoi_long(const char *nptr);
 
 #endif
