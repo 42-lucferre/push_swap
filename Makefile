@@ -6,7 +6,7 @@
 #    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 22:34:11 by lucferre          #+#    #+#              #
-#    Updated: 2026/08/11 23:42:57 by lucferre         ###   ########.fr        #
+#    Updated: 2026/08/12 22:20:47 by lucferre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,9 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBFT_DIR = ./Libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRC = adaptive.c data_operators.c disorder.c \
-flags.c initializers.c main.c medium_sort.c \
-operators_printer.c rank_stack.c simple_sort.c stack_operations.c \
-benchmark.c
+SRC = adaptive.c benchmark.c data_operators.c disorder.c \
+errors.c flags.c initializers.c main.c medium_sort.c \
+operators_printer.c rank_stack.c simple_sort.c stack_operations.c
 OBJ = $(SRC:.c=.o)
 HEADER = push_swap.h
 

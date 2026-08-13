@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 00:38:56 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/13 00:28:14 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,19 @@ void	sort_decider(t_master *master)
 	}
 }
 
-void	stack_creator(t_master *master)
+int	stack_creator(t_master *master)
 {
 	int		i;
 
+	if (master->split > 0)
+	{
+		free(master->stack_a);
+		free(master->stack_b);
+		master->stack_a = malloc(master->size_a * sizeof(int));
+		master->stack_b = malloc(master->size_a * sizeof(int));
+		if (!master->stack_a || !master->stack_b)
+			return (-1);
+	}
 	i = 0;
 	while (i < master->size_a)
 	{
@@ -53,8 +62,7 @@ void	stack_creator(t_master *master)
 	sort_decider(master);
 	if (master->flags.has_bench)
 		bench_printer(master);
-	free(master->stack_a);
-	free(master->stack_b);
+	return (0);
 }
 
 //#include <stdio.h>
@@ -66,11 +74,20 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	master = init_master(--argc, ++argv);
-	if (!master || error_check(master) < 0)
+	if (!master)
 		return (write(1, "Error\n", 6), 2);
-	stack_creator(master);
+	if (error_check(master) < 0)
+		return (free_all(master), write(1, "Error\n", 6), 2);
+	if (stack_creator(master) < 0)
+		return (free_all(master), write(1, "Error\n", 6), 2);
 	//printf("%f\n", master->disorder);
 	//ft_printf("%d\n", master->strat);
-	free(master);
+		// i = 0;
+	// while (i < 6)
+	// {
+	// 	ft_printf("%d\n", master->stack_a[i]);
+	// 	i++;
+	// }
+	free_all(master);
 	return (0);
 }

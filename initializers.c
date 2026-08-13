@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:08:02 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/11 23:41:09 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/13 00:45:47 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ t_master	*init_master(int size, char **args)
 	if (!master->stack_b)
 		return (free(master->stack_a), free(master), NULL);
 	master->size_a = size;
+	master->size_b = 0;
 	master->args = args;
+	master->split = 0;
 	init_counter(&master->op_counter);
 	init_flags(&master->flags);
 	master->strat = STRAT_START;
-	master->disorder = disorder(master->stack_a, size);
 	return (master);
 }

@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 01:04:44 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/13 00:35:28 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_master
 	int			size_b;
 	double		disorder;
 	char		**args;
+	int			split;
 }				t_master;
 
 // Flags & errors
@@ -77,6 +78,7 @@ int			error_check(t_master *master);
 int			rep_check(int size, char **args);
 int			flag_check(t_master *master);
 int			flag_value(t_flags *flag, char *arg);
+int			space_check(t_master *master);
 int			int_check(int size, char **args);
 void		bench_printer(t_master *master);
 void		disorder_printer(t_master *master);
@@ -84,15 +86,16 @@ void		flag_printer(t_master *master);
 void		strat_printer(t_master *master);
 void		op_counter_printer(t_op op_counter);
 
-// Initializers
+// Initializers & free
 void		init_flags(t_flags *flags);
 t_master	*init_master(int size, char **args);
 void		init_counter(t_op *op_counter);
+void		free_all(t_master *master);
 
 // Operators
 
 int			main(int argc, char **argv);
-void		stack_creator(t_master *master);
+int			stack_creator(t_master *master);
 void		selection_sort(t_master *master);
 void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);
