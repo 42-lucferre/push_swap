@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 23:42:36 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 01:04:25 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 23:31:12 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	disorder_printer(t_master *master)
 	decimal = (int)((nmb - integer) * 100);
 	write(2, ".", 1);
 	ft_putnbr_fd(decimal, 2);
+	write(2, "%%", 1);
 }
 
 void	flag_printer(t_master *master)
