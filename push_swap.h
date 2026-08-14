@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/13 00:35:28 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 00:09:59 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_op
 	int	rrb;
 	int	rrr;
 	int	total;
+	int	print;
 }		t_op;
 
 typedef struct s_flags

@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:08:02 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/13 00:45:47 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 00:11:40 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_counter(t_op *op_counter)
 	op_counter->rrb = 0;
 	op_counter->rrr = 0;
 	op_counter->total = 0;
+	op_counter->print = 1;
 }
 
 void	init_flags(t_flags *flags)

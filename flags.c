@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:50:59 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 22:22:10 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 00:07:47 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	flag_check(t_master *master)
 	{
 		if (flag_value(&master->flags, master->args[1]) < 0)
 			return (1);
-
 		else
 			return (2);
 	}
