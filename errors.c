@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 22:20:10 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/13 00:21:52 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 01:11:49 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int	error_check(t_master *master)
 	master->size_a -= total_flags;
 	if (space_check(master) < 0)
 		return (-1);
-	if (rep_check(master->size_a, master->args) < 0)
-		return (-1);
-	if (int_check(master->size_a, master->args) < 0)
+	if (rep_check(master->size_a, master->args) < 0
+		|| int_check(master->size_a, master->args) < 0)
 		return (-1);
 	flag = master->flags;
+	if (flag.has_simple + flag.has_medium + flag.has_complex + flag.has_adaptive
+		> 1)
+		return (-1);
 	if (!flag.has_simple && !flag.has_medium && !flag.has_complex)
 		master->flags.has_adaptive = 1;
 	return (0);
