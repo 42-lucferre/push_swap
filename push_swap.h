@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 00:09:59 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 15:55:29 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,8 @@ void		pb_operation(t_master *master);
 void		pa_operation(t_master *master);
 int			medium_sort(t_master *master);
 int			rank_stack(int *stack, int size);
+void		sort_a_medium(t_master *master, int start, int chunk_size);
+void		ra_operation(t_master *master);
+int			complex_sort(t_master *master);
 
 #endif

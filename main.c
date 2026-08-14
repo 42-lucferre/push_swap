@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 00:12:34 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 16:08:19 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sort_decider(t_master *master)
 	else if (flag.has_complex || master->strat == STRAT_COMPLEX)
 	{
 		master->strat = STRAT_COMPLEX;
-	// 	complex_sort(master);
+		complex_sort(master);
 	}
 }
 
@@ -65,7 +65,7 @@ int	stack_creator(t_master *master)
 	return (0);
 }
 
-//#include <stdio.h>
+/*#include <stdio.h>*/
 
 int	main(int argc, char **argv)
 {
@@ -80,14 +80,14 @@ int	main(int argc, char **argv)
 		return (free_all(master), write(1, "Error\n", 6), 2);
 	if (stack_creator(master) < 0)
 		return (free_all(master), write(1, "Error\n", 6), 2);
-	//printf("%f\n", master->disorder);
-	//ft_printf("%d\n", master->strat);
-		// i = 0;
-	// while (i < 6)
-	// {
-	// 	ft_printf("%d\n", master->stack_a[i]);
-	// 	i++;
-	// }
+	/*printf("%f\n", master->disorder);
+	ft_printf("%d\n", master->strat);
+		i = 0;
+	while (i < 6)
+	{
+		ft_printf("%d\n", master->stack_a[i]);
+		i++;
+	}*/
 	free_all(master);
 	return (0);
 }
