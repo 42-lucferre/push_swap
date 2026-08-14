@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 15:16:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/07/13 22:09:16 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/12 01:24:12 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//printf
 int		ft_printf(const char *f, ...);
 char	*ft_utoa(unsigned int n);
 int		ft_puthex(unsigned long n, int u);
@@ -79,10 +81,15 @@ int		f_pointer(va_list p_args);
 int		f_int(va_list p_args);
 int		f_unsigned(va_list p_args);
 int		f_hex(va_list p_args, char f);
+
+//getnextline
 char	*get_next_line(int fd);
 int		line_end(char *acc);
 char	*str_join(char *acc, char *buffer);
 char	*read_line(char *acc);
 char	*extract_line(char *acc, char *line);
+
+//extra
+long	ft_atoi_long(const char *nptr);
 
 #endif

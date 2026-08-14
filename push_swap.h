@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 16:56:43 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/14 11:14:27 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 # include <unistd.h>
 # include "./Libft/libft.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
+# ifndef MY_INT_MAX
+#  define MY_INT_MAX 2147483647
+# endif
+
+# ifndef MY_INT_MIN
+#  define MY_INT_MIN -2147483648
 # endif
 
 typedef struct s_op
@@ -34,6 +38,8 @@ typedef struct s_op
 	int	rra;
 	int	rrb;
 	int	rrr;
+	int	total;
+	int	print;
 }		t_op;
 
 typedef struct s_flags
@@ -47,6 +53,7 @@ typedef struct s_flags
 
 typedef enum e_strategy
 {
+	STRAT_START,
 	STRAT_NONE,
 	STRAT_SIMPLE,
 	STRAT_MEDIUM,
@@ -64,24 +71,32 @@ typedef struct s_master
 	int			size_b;
 	double		disorder;
 	char		**args;
+	int			split;
 }				t_master;
 
 // Flags & errors
 int			error_check(t_master *master);
 int			rep_check(int size, char **args);
 int			flag_check(t_master *master);
-int			flag_value(t_flags flag, char *arg);
+int			flag_value(t_flags *flag, char *arg);
+int			space_check(t_master *master);
 int			int_check(int size, char **args);
+void		bench_printer(t_master *master);
+void		disorder_printer(t_master *master);
+void		flag_printer(t_master *master);
+void		strat_printer(t_master *master);
+void		op_counter_printer(t_op op_counter);
 
-// Initializers
-void		init_flags(t_flags flags);
+// Initializers & free
+void		init_flags(t_flags *flags);
 t_master	*init_master(int size, char **args);
-void		init_counter(t_op op_counter);
+void		init_counter(t_op *op_counter);
+void		free_all(t_master *master);
 
 // Operators
 
 int			main(int argc, char **argv);
-void		stack_creator(t_master *master);
+int			stack_creator(t_master *master);
 void		selection_sort(t_master *master);
 void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);

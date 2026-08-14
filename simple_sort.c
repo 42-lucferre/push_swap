@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 14:43:39 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/11 23:01:02 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	selection_sort(t_master *master)
 		index = min_finder(master->stack_a, master->size_a);
 		rotation_direction(master->stack_a, index, master->size_a,
 			&master->op_counter);
+		if (disorder(master->stack_a,
+				master->size_a) == 0 && master->size_b == 0)
+			return ;
 		pb_operation(master);
 	}
 	while (master->size_b > 0)

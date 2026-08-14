@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   ft_atoi_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 18:25:04 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/11 00:21:39 by lucferre         ###   ########.fr       */
+/*   Created: 2026/08/10 23:07:46 by lucferre          #+#    #+#             */
+/*   Updated: 2026/08/12 01:21:15 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-double	disorder(int *stack, int size)
+long	ft_atoi_long(const char *nptr)
 {
-	int	i;
-	int	j;
-	int	pairs;
-	int	inversions;
+	int		i;
+	int		s;
+	long	r;
 
-	if (size < 2)
-		return (0);
-	pairs = (size * (size - 1)) / 2;
 	i = 0;
-	inversions = 0;
-	while (i < size - 1)
+	s = 1;
+	r = 0;
+	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-')
 	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (stack[i] > stack[j])
-				inversions++;
-			j++;
-		}
+		s *= -1;
 		i++;
 	}
-	return ((double)inversions / pairs);
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		r = (r * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (r * s);
 }
