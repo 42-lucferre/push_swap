@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 11:36:41 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/09 14:18:03 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 15:35:37 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	pa_operation(t_master *master)
 		master->size_b--;
 		master->size_a++;
 	}
+}
+
+void	ra_operation(t_master *master)
+{
+	rotate(master->stack_a, master->size_a);
+	rotate_printer(&master->op_counter, 'a');
 }
