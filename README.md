@@ -84,6 +84,24 @@ This structure sggregates the two stacks, operation counters, flags, chosen stra
 * __Complex - O(n log n)__:
   * It was used a LSD (Least Significant Digit) radix sort. The stack is first ranked into normalized indices from 0 to (size - 1). Then, for each bit position from least to most significant, a pass is performed: every element in _stack_a_ with the current bit set to 0 is pushed to _stack_b_, while elements with the bit set to 1 are rotated withing _stack_a_. After processing all elements of that bit position, everything in _stack_b_ is pushed back to _stack_a_. The process repeats for each bit until the entire stack is sorted in ascending order.
 
+### Contributions
+
+The project was divided between both contributers, where each was responsible by parts of project's developing.
+
+* _jcorrea_ 
+  * Makefile
+  * Medium Sort
+  * Complex Sort
+  * Disorder and adaptive sort calculations
+
+* _lucferre_
+  * Simple Sort
+  * Parser
+  * Benchmark
+  * README
+
+Both understood it's assignments, and made sure to explain it to each other their code. 
+
 ## Instructions
 
 To compile this program, run:
@@ -141,7 +159,7 @@ Optional flags are:
 They must be used before arguments. You may not use more than one strategy flag (simple medium complex adaptive).
 
 ```bash
-./push_swap <optional flags> <integer arguments> (or <"integer arguments">)
+./push_swap <optional flags> <integer arguments> (or "<integer arguments>")
 ```
 
 ## Resources
