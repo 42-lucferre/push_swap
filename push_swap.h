@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:21 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 15:55:29 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 09:25:33 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,10 @@ void		free_all(t_master *master);
 int			main(int argc, char **argv);
 int			stack_creator(t_master *master);
 void		selection_sort(t_master *master);
-void		insert(int element_a, int *stack_b, int pos);
 void		swap(int *stack, int size);
 int			push(int *stack_a, int *stack_b, int size_a, int size_b);
-void		rotate(int *stack, int size);
-void		reverse_rotate(int *stack, int size);
+int			rotate(int *stack, int size);
+int			reverse_rotate(int *stack, int size);
 int			min_finder(int *stack, int size);
 void		rotation_direction(int *stack, int index,
 				int current_size, t_op *op_c);

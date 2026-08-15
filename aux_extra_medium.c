@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   aux_extra_medium.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 14:59:53 by jcorrea           #+#    #+#             */
 /*   Updated: 2026/08/15 14:16:28 by jcorrea          ###   ########.fr       */
@@ -43,16 +43,16 @@ static int	medium_b_to_a(t_master *master, int start, int chunk_size)
 	i = 0;
 	while (i < index)
 	{
-		rotate(master->stack_b, master->size_b);
-		rotate_printer(&master->op_counter, 'b');
+		if (rotate(master->stack_b, master->size_b))
+			rotate_printer(&master->op_counter, 'b');
 		i++;
 	}
 	pa_operation(master);
 	i = 0;
 	while (i < index)
 	{
-		reverse_rotate(master->stack_b, master->size_b);
-		r_rotate_printer(&master->op_counter, 'b');
+		if (reverse_rotate(master->stack_b, master->size_b))
+			r_rotate_printer(&master->op_counter, 'b');
 		i++;
 	}
 	return (1);

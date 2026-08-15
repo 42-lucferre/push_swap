@@ -51,56 +51,38 @@ The program receives a list of integers as arguments, validates them, and output
 
 ## Details
 
-### Functions
+### Architecture
 
-t_op;
-t_flags
-t_strategy
-t_master
+The program is built around a central __master structure__ that holds all important values:
 
-// Flags & errors
-int			error_check(t_master *master);
-int			rep_check(int size, char **args);
-int			flag_check(t_master *master);
-int			flag_value(t_flags *flag, char *arg);
-int			space_check(t_master *master);
-int			int_check(int size, char **args);
-void		bench_printer(t_master *master);
-void		disorder_printer(t_master *master);
-void		flag_printer(t_master *master);
-void		strat_printer(t_master *master);
-void		op_counter_printer(t_op op_counter);
+``` c
+typedef struct s_master
+{
+t_strategy strat;
+    t_op       op_counter;
+    t_flags    flags;
+    int        *stack_a;
+    int        *stack_b;
+    int        size_a;
+    int        size_b;
+    double     disorder;
+    char       **args;
+    int        split;
+}              t_master;
+```
 
-// Initializers & free
-void		init_flags(t_flags *flags);
-t_master	*init_master(int size, char **args);
-void		init_counter(t_op *op_counter);
-void		free_all(t_master *master);
+This structure sggregates the two stacks, operation counters, flags, chosen strategy, and parsed arguments. This design allow all functions to access and modify the program state through a single pointer, eliminating the need for excessive parameter passing.
 
-// Operators
+### Algorithms
 
-int			main(int argc, char **argv);
-int			stack_creator(t_master *master);
-void		selection_sort(t_master *master);
-void		insert(int element_a, int *stack_b, int pos);
-void		swap(int *stack, int size);
-int			push(int *stack_a, int *stack_b, int size_a, int size_b);
-void		rotate(int *stack, int size);
-void		reverse_rotate(int *stack, int size);
-int			min_finder(int *stack, int size);
-void		rotation_direction(int *stack, int index,
-				int current_size, t_op *op_c);
-void		swap_printer(t_op *op_counter, char stack);
-void		push_printer(t_op *op_counter, char stack);
-void		rotate_printer(t_op *op_counter, char stack);
-void		r_rotate_printer(t_op *op_counter, char stack);
-double		disorder(int *stack, int size);
-t_strategy	adaptive(double disorder_value);
-int			rank_stack(int *stack, int size);
-void		pb_operation(t_master *master);
-void		pa_operation(t_master *master);
-int			medium_sort(t_master *master);
-int			rank_stack(int *stack, int size);
+* __Simple - O(n2)__:
+  * It was used a selection sort, where it repeteadly finds the minimum element in _stack_a_, rotates it to the top, and pushes it to _stack_b_. Once _stack_a_ is empty, all elementes are pushed back to _stack_a_ in sorted order.
+
+* __Medium - O(n√n)__:
+  * It was used a chunk sort strategy. The stack is first ranked into normalized indices, then divided into chunks of size approximately √n. Elements within the current rank range are rotated to the top of _stack_a_ and pused to _stack_b_, proceeding from the lowest chunk to the highest. Once _stack_a_ is empty, elements are pushed back in reverse chunk order (for each chunk, the maximum value is retrieved first), which builds _stack_a_ in ascending order from top to bottom.
+
+* __Complex - O(n log n)__:
+  * It was used a LSD (Least Significant Digit) radix sort. The stack is first ranked into normalized indices from 0 to (size - 1). Then, for each bit position from least to most significant, a pass is performed: every element in _stack_a_ with the current bit set to 0 is pushed to _stack_b_, while elements with the bit set to 1 are rotated withing _stack_a_. After processing all elements of that bit position, everything in _stack_b_ is pushed back to _stack_a_. The process repeats for each bit until the entire stack is sorted in ascending order.
 
 ## Instructions
 
@@ -148,22 +130,22 @@ make re
 
 ***
 
-Included flags are:
+Optional flags are:
 
---bench
---simple
---medium
---complex
---adaptive
+* --bench
+* --simple
+* --medium
+* --complex
+* --adaptive
 
-They must be used before arguments. You may not use more than one strategy flag (simple medium complex adaptive)
+They must be used before arguments. You may not use more than one strategy flag (simple medium complex adaptive).
 
 ```bash
-cc <your_file.c> -I./Libft -L./Libft -lft -o <output_name>
+./push_swap <optional flags> <integer arguments> (or <"integer arguments">)
 ```
 
 ## Resources
 
-"__man__" was the primary source of information, used on Linux terminal.
+"__man__" used on Linux terminal and internet forums such as Stack Overflow were the primary sources of information.
 
 AI was used as a secondary learning tool.
