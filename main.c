@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 16:08:19 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 10:56:04 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ int	main(int argc, char **argv)
 		return (0);
 	master = init_master(--argc, ++argv);
 	if (!master)
-		return (write(1, "Error\n", 6), 2);
+		return (write(2, "Error\n", 6), 2);
 	if (error_check(master) < 0)
-		return (free_all(master), write(1, "Error\n", 6), 2);
+		return (free_all(master), write(2, "Error\n", 6), 2);
 	if (stack_creator(master) < 0)
-		return (free_all(master), write(1, "Error\n", 6), 2);
+		return (free_all(master), write(2, "Error\n", 6), 2);
 	free_all(master);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 22:20:10 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 01:11:49 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/15 11:45:25 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	error_check(t_master *master)
 	master->size_a -= total_flags;
 	if (space_check(master) < 0)
 		return (-1);
-	if (rep_check(master->size_a, master->args) < 0
-		|| int_check(master->size_a, master->args) < 0)
+	if (int_check(master->size_a, master->args) < 0
+		|| rep_check(master->size_a, master->args) < 0)
 		return (-1);
 	flag = master->flags;
 	if (flag.has_simple + flag.has_medium + flag.has_complex + flag.has_adaptive
@@ -52,7 +52,7 @@ int	rep_check(int size, char **args)
 		j = i + 1;
 		while (j < size)
 		{
-			if (ft_strncmp(args[i], args[j], 15) == 0)
+			if (ft_atoi_long(args[i]) == ft_atoi_long(args[j]))
 				return (-1);
 			j++;
 		}
@@ -76,7 +76,7 @@ int	int_check(int size, char **args)
 		if (args[i][j] == '\0')
 			return (-1);
 		while (args[i][j] != '\0')
-		{			
+		{
 			if (args[i][j] < '0' || args[i][j] > '9')
 				return (-1);
 			j++;
