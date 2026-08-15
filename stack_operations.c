@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 11:36:41 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/14 15:35:37 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 09:25:28 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	pa_operation(t_master *master)
 
 void	ra_operation(t_master *master)
 {
-	rotate(master->stack_a, master->size_a);
-	rotate_printer(&master->op_counter, 'a');
+	if (rotate(master->stack_a, master->size_a))
+		rotate_printer(&master->op_counter, 'a');
 }
