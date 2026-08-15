@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 11:36:41 by jcorrea           #+#    #+#             */
 /*   Updated: 2026/08/15 09:25:28 by lucferre         ###   ########.fr       */

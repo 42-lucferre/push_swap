@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/11 23:42:36 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/12 23:31:12 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/14 16:54:37 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ void	disorder_printer(t_master *master)
 	int		integer;
 	int		decimal;
 
-	nmb = master->disorder;
+	nmb = master->disorder * 100;
 	integer = (int)nmb;
 	ft_putnbr_fd(integer, 2);
 	decimal = (int)((nmb - integer) * 100);
 	write(2, ".", 1);
+	if (decimal < 10)
+		write(2, "0", 1);
 	ft_putnbr_fd(decimal, 2);
-	write(2, "%%", 1);
+	write(2, "%", 1);
 }
 
 void	flag_printer(t_master *master)
@@ -49,9 +51,9 @@ void	flag_printer(t_master *master)
 		write(2, "Adaptive / ", 11);
 	else if (master->flags.has_simple)
 		write(2, "Simple / ", 9);
-	else if (master->flags.has_simple)
+	else if (master->flags.has_medium)
 		write(2, "Medium / ", 9);
-	else if (master->flags.has_simple)
+	else if (master->flags.has_complex)
 		write(2, "Complex / ", 10);
 }
 

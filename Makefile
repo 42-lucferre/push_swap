@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+         #
+#    By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 22:34:11 by lucferre          #+#    #+#              #
 #    Updated: 2026/08/15 09:25:36 by lucferre         ###   ########.fr        #

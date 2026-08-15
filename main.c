@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
 /*   Updated: 2026/08/15 09:25:44 by lucferre         ###   ########.fr       */
@@ -34,7 +34,7 @@ void	sort_decider(t_master *master)
 	else if (flag.has_complex || master->strat == STRAT_COMPLEX)
 	{
 		master->strat = STRAT_COMPLEX;
-	// 	complex_sort(master);
+		complex_sort(master);
 	}
 }
 
