@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 11:36:41 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/09 14:18:03 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/15 09:22:06 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	pa_operation(t_master *master)
 		master->size_b--;
 		master->size_a++;
 	}
+}
+
+void	ra_operation(t_master *master)
+{
+	if (rotate(master->stack_a, master->size_a))
+		rotate_printer(&master->op_counter, 'a');
 }

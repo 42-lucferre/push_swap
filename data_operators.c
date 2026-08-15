@@ -6,24 +6,11 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 23:03:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/09 14:26:14 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/15 09:12:27 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	insert(int element_a, int *stack_b, int pos)
-{
-	int	i;
-
-	i = 0;
-	while (i < pos)
-	{
-		stack_b[i] = stack_b[i + 1];
-		i++;
-	}
-	stack_b[i] = element_a;
-}
 
 void	swap(int *stack, int size)
 {
@@ -57,13 +44,13 @@ int	push(int *stack_a, int *stack_b, int size_a, int size_b)
 	return (1);
 }
 
-void	rotate(int *stack, int size)
+int	rotate(int *stack, int size)
 {
 	int	tmp;
 	int	i;
 
 	if (size <= 1)
-		return ;
+		return (0);
 	tmp = stack[0];
 	i = 1;
 	while (i < size)
@@ -72,14 +59,15 @@ void	rotate(int *stack, int size)
 		i++;
 	}
 	stack[size - 1] = tmp;
+	return (1);
 }
 
-void	reverse_rotate(int *stack, int size)
+int	reverse_rotate(int *stack, int size)
 {
 	int	tmp;
 
 	if (size <= 1)
-		return ;
+		return (0);
 	tmp = stack[size - 1];
 	while (size > 1)
 	{
@@ -87,4 +75,5 @@ void	reverse_rotate(int *stack, int size)
 		size--;
 	}
 	stack[0] = tmp;
+	return (1);
 }

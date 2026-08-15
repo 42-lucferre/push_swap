@@ -6,7 +6,7 @@
 /*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/14 00:12:34 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/15 09:21:00 by lucferre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	stack_creator(t_master *master)
 	while (i < master->size_a)
 	{
 		master->stack_a[i] = ft_atoi(master->args[i]);
-		//master->stack_b[i] = 0;
 		i++;
 	}
 	master->disorder = disorder(master->stack_a, master->size_a);
@@ -64,8 +63,6 @@ int	stack_creator(t_master *master)
 		bench_printer(master);
 	return (0);
 }
-
-//#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -80,14 +77,6 @@ int	main(int argc, char **argv)
 		return (free_all(master), write(1, "Error\n", 6), 2);
 	if (stack_creator(master) < 0)
 		return (free_all(master), write(1, "Error\n", 6), 2);
-	//printf("%f\n", master->disorder);
-	//ft_printf("%d\n", master->strat);
-		// i = 0;
-	// while (i < 6)
-	// {
-	// 	ft_printf("%d\n", master->stack_a[i]);
-	// 	i++;
-	// }
 	free_all(master);
 	return (0);
 }
