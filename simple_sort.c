@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucferre <lucferre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 22:36:57 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/11 23:01:02 by lucferre         ###   ########.fr       */
+/*   Updated: 2026/08/15 15:40:03 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	selection_sort(t_master *master)
 		if (disorder(master->stack_a,
 				master->size_a) == 0 && master->size_b == 0)
 			return ;
+		if (disorder(master->stack_a,
+				master->size_a) == 0 && master->size_b > 0)
+			break ;
 		pb_operation(master);
 	}
 	while (master->size_b > 0)

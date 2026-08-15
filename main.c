@@ -6,11 +6,34 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 22:47:26 by lucferre          #+#    #+#             */
-/*   Updated: 2026/08/15 13:06:33 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 15:55:48 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	few_args(t_master *master)
+{
+	t_flags		flag;
+
+	flag = master->flags;
+	selection_sort(master);
+	if (flag.has_simple || master->strat == STRAT_SIMPLE)
+	{
+		master->strat = STRAT_SIMPLE;
+		selection_sort(master);
+	}
+	else if (flag.has_medium || master->strat == STRAT_MEDIUM)
+	{
+		master->strat = STRAT_MEDIUM;
+		selection_sort(master);
+	}
+	else if (flag.has_complex || master->strat == STRAT_COMPLEX)
+	{
+		master->strat = STRAT_COMPLEX;
+		selection_sort(master);
+	}
+}
 
 void	sort_decider(t_master *master)
 {
@@ -21,6 +44,8 @@ void	sort_decider(t_master *master)
 		master->strat = adaptive(master->disorder);
 	if (master->strat == STRAT_NONE)
 		return ;
+	if (master->size_a < 6)
+		few_args(master);
 	if (flag.has_simple || master->strat == STRAT_SIMPLE)
 	{
 		master->strat = STRAT_SIMPLE;

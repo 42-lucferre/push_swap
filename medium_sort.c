@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/08 11:48:40 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/12 18:57:42 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 14:35:31 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	multi_rotation(t_master *master, int times)
 {
 	while (times > 0)
 	{
-		rotate(master->stack_a, master->size_a);
-		rotate_printer(&master->op_counter, 'a');
+		if (rotate(master->stack_a, master->size_a))
+			rotate_printer(&master->op_counter, 'a');
 		times--;
 	}
 }
@@ -58,6 +58,9 @@ int	medium_sort(t_master *master)
 	start = 0;
 	while (master->size_a > 0)
 	{
+		if (disorder(master->stack_a,
+				master->size_a) == 0 && master->size_b == 0)
+			return (0);
 		top_dist = top_distance(master->stack_a,
 				master->size_a, start, (start + chunk_size));
 		if (top_dist == -1)
