@@ -6,7 +6,7 @@
 /*   By: jcorrea <jcorrea@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 15:10:49 by jcorrea           #+#    #+#             */
-/*   Updated: 2026/08/14 15:54:46 by jcorrea          ###   ########.fr       */
+/*   Updated: 2026/08/15 15:30:04 by jcorrea          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int	complex_sort(t_master *master)
 	bit = 0;
 	while (bit < n_bits)
 	{
+		if (disorder(master->stack_a,
+				master->size_a) == 0 && master->size_b == 0)
+			return (0);
 		radix_pass(master, bit);
 		bit++;
 	}
